@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { Alert, Skeleton } from "@mui/material";
 
-export default function Excuse({value}) {
-    const [excuse, setExcuse] = useState("");
+export default function Excuse({setView, value}) {
+    const [excuse, setExcuse] = useState({});
     useEffect(() => {
         fetch(`https://excuser-three.vercel.app/v1/excuse/${value}`)
         .then(response => response.json())
         .then(json => {
-            setExcuse(json[0].excuse);
+            setExcuse(json[0]);
         })
     }, [value])
 
-
-    while(excuse === undefined) {
+    
+    if(Object.keys(excuse) < 1) {
         console.log(excuse)
         return(
             <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
@@ -21,9 +21,11 @@ export default function Excuse({value}) {
     }
 
 
+
     return (
-        <Alert severity="success">Your Excuse: {excuse}</Alert>
+        <Alert severity="success">Your Excuse: {excuse.excuse}</Alert>
     )
+
 
 
 }

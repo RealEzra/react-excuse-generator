@@ -1,5 +1,5 @@
-import { Alert, Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { useEffect, useState } from "react";
+import {  Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { useState } from "react";
 import Excuse from "./excuser";
 
 
@@ -30,7 +30,7 @@ export default function Home() {
             <p>Create excuses on the fly!</p>
         </div>
 
-        <div className="content">
+        <div>
             <Box sx={{maxWidth: 250}}>
             <FormControl fullWidth>
             <InputLabel id="excuse">Excuse</InputLabel>
